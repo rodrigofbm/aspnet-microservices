@@ -37,7 +37,7 @@ namespace Discount.API.Extensions
                     );";
                     command.ExecuteNonQuery();
                     command.CommandText = @"insert into coupon (productname, description, amount) 
-                        values('Iphone X', 'iPhone Discount', 150);";
+                        values('IPhone X', 'iPhone Discount', 150);";
                     command.ExecuteNonQuery();
                     command.CommandText = @"insert into coupon (productname, description, amount) 
                         values('Samsung 10', 'Samsung Discount', 150);";
