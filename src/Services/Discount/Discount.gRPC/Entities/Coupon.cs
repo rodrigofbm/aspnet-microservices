@@ -1,4 +1,4 @@
-namespace Discount.API.Entities
+namespace Discount.gRPC.Entities
 {
     public class Coupon
     {
