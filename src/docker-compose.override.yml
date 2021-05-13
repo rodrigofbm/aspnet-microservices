@@ -25,6 +25,16 @@ services:
       - "5432:5432"
     volumes: 
       - postgres_data:/var/lib/postgresql/data
+        
+  orderdb:
+    container_name: orderdb
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=SwN12345678
+      #- MSSQL_PID=<your_product_id | edition_name>
+    ports:
+      - "1433:1433"
 
   portainer:
     container_name: portainer
@@ -76,3 +86,13 @@ services:
       - discountdb
     ports:
     - "8003:80"
+
+  order.api:
+    container_name: order.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678;"
+    depends_on:
+      - orderdb
+    ports:
+    - "8004:80"
